@@ -10,6 +10,7 @@ import Programmers from './components/Programmers';
 
 render(
   <>
+  {/* react fragmentt */}
     <Counter />
     <Moods />
     <Spinner />
