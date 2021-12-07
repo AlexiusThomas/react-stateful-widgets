@@ -33,7 +33,6 @@ STEP 6:
   For the input to reset correctly, it needs to "drink" its value from state!
   We need to add an extra prop to the <input /> element like so: value={inputValue}
 */
-
 import React, {useState} from 'react'; /* STEP 0 */
 
 export default function Input() {
@@ -41,31 +40,33 @@ export default function Input() {
   const [inputValue, setInputValue] = useState('');
 
   const changeInput = evt => {
+    console.log(evt)
+
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     const { value } = evt.target;
 
-    /* STEP 4 */
+  
     setInputValue(value);
-    console.log(inputValue);
+     /* STEP 4 */
 };
   const reset = () => {
     /* STEP 5 */
-    setInputValue('');
+    setInputValue('')
   };
 
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: (inputValue.length > 10) ? 'red' :'royalblue', /* STEP 2 */
+    color: inputValue.length <=10 ? 'royalblue': 'crimson', /* STEP 2 */
   };
 
   return (
     <div className='widget-input container'>
       <h2>Input</h2>
-      <div id='output' style={style}>{inputValue.toUpperCase()}</div> {/* STEP 3 */}
+      <div id='output' style={style}>{inputValue.toUpperCase()}</div> 
       <div>
-      <input id='input' value = {inputValue} type='text' onChange={changeInput} />  {/* STEP 6 */}
+      <input value={inputValue} id='input' type='text' onChange={changeInput} /> {/* STEP 6 */}
         <button id='resetInput' onClick={reset}>Reset</button>
       </div>
     </div>
